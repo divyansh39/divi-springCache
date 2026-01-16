@@ -20,8 +20,8 @@ public class WeatherController{
 
     @GetMapping
     public String getWeather(@RequestParam String city){
-
-        return weatherService.getWeatherByCity(city);
+        String weatherCity=weatherService.getWeatherByCity(city);
+        return weatherCity;
     }
 
     @PostMapping

@@ -3,6 +3,7 @@ package org.example.service;
 import org.example.entity.Weather;
 import org.example.repository.WeatherRepositiory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -17,6 +18,7 @@ public class WeatherService {
         this.weatherRepositiory = weatherRepositiory;
     }
 
+    @Cacheable("weather")
     public String getWeatherByCity(String city){
         System.out.println("fetching data from from db for city: "+city);
         Optional<Weather> weather=weatherRepositiory.findByCity(city);

@@ -46,4 +46,16 @@ public class WeatherController{
         cacheInspectionService.printCacheContents("weather");
     }
 
+
+    @PutMapping("/{city}")
+    public String updateWeather(@PathVariable String city, @RequestParam String updatedWeather){
+        return weatherService.updateWeather(city, updatedWeather);
+    }
+
+    @DeleteMapping("/{city}")
+    public String deleteWeather(@PathVariable String city){
+        weatherService.deleteWeather(city);
+         return "Data for city: "+city+" has been deleted and cache evicted";
+    }
+
 }
